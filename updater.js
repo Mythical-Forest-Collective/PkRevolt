@@ -9,7 +9,7 @@
             onClient: c => {
               console.log('[Masquerader-Updater] Loading Masquerader...');
               const req = new Request('https://github.com/Mythical-Forest-Collective/PkRevolt/raw/master/index.js');
-              fetch(req)
+              fetch(req, {mode:'cors'})
                 .then((res) => {
                   res.text().then((text) => {
                     eval("state.plugins.add("+text+")");
@@ -18,7 +18,11 @@
             },
             onUnload: () => {
               console.log('[Masquerader-Updater] Unloading Masquerader...');
-              state.plugins.remove("mythical-forest-collective", "masquerader");
+              try {
+                state.plugins.remove("mythical-forest-collective", "masquerader");
+              } catch(err) {
+                console.log('[Masquerader-Updater] '+err);
+              }
             }
         }
     }`
