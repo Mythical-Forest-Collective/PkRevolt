@@ -8,7 +8,7 @@
         return {
             onClient: c => {
               console.log('[Masquerader-Updater] Loading Masquerader...');
-              const req = new Request('https://github.com/Mythical-Forest-Collective/PkRevolt/raw/master/index.js');
+              const req = new Request('https://raw.githubusercontent.com/Mythical-Forest-Collective/PkRevolt/master/index.js');
               fetch(req, {mode:'cors'})
                 .then((res) => {
                   res.text().then((text) => {
